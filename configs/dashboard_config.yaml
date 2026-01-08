@@ -1,0 +1,202 @@
+# Streamlit Dashboard Configuration
+
+# Page Configuration
+page_config:
+  page_title: 'Smart Contract Security Analyzer'
+  page_icon: '🔒'
+  layout: 'wide'
+  initial_sidebar_state: 'expanded'
+
+# Theme Configuration
+theme:
+  primary_color: '#FF6B6B'
+  background_color: '#FFFFFF'
+  secondary_background_color: '#F0F2F6'
+  text_color: '#262730'
+  font: 'sans serif'
+
+# Navigation
+navigation:
+  pages:
+    - name: 'Analysis'
+      icon: '🔍'
+      file: 'pages/01_analyze.py'
+    - name: 'Results'
+      icon: '📊'
+      file: 'pages/02_results.py'
+    - name: 'Comparison'
+      icon: '⚖️'
+      file: 'pages/03_comparison.py'
+    - name: 'Metrics'
+      icon: '📈'
+      file: 'pages/04_metrics.py'
+    - name: 'About'
+      icon: 'ℹ️'
+      file: 'pages/05_about.py'
+
+# File Upload Configuration
+file_upload:
+  max_file_size: 1048576  # 1MB
+  accepted_types: ['.sol']
+  drag_and_drop: true
+  multiple_files: false
+
+# Code Editor Configuration
+code_editor:
+  theme: 'monokai'
+  language: 'solidity'
+  font_size: 14
+  tab_size: 4
+  line_numbers: true
+  word_wrap: true
+  auto_complete: true
+
+# Visualization Configuration
+visualization:
+  # Chart colors for vulnerability severity
+  severity_colors:
+    Critical: '#FF4B4B'
+    High: '#FF8C00'
+    Medium: '#FFD700'
+    Low: '#32CD32'
+    Info: '#87CEEB'
+  
+  # Chart configuration
+  charts:
+    default_height: 400
+    default_width: 600
+    show_toolbar: true
+    responsive: true
+  
+  # Plotly configuration
+  plotly_config:
+    displayModeBar: true
+    displaylogo: false
+    modeBarButtonsToRemove:
+      - 'pan2d'
+      - 'lasso2d'
+      - 'select2d'
+
+# Analysis Configuration
+analysis:
+  # Default analysis options
+  default_options:
+    include_tool_comparison: true
+    generate_pdf_report: false
+    show_feature_importance: true
+    highlight_vulnerabilities: true
+  
+  # Progress tracking
+  progress:
+    show_progress_bar: true
+    update_interval: 1.0  # seconds
+    
+# Results Display
+results:
+  # Vulnerability cards
+  vulnerability_cards:
+    show_severity_badge: true
+    show_confidence_score: true
+    show_line_numbers: true
+    expandable_details: true
+  
+  # Code highlighting
+  code_highlighting:
+    highlight_vulnerable_lines: true
+    highlight_color: '#FFE4E1'
+    line_number_color: '#FF6B6B'
+  
+  # Feature importance
+  feature_importance:
+    max_features_display: 20
+    show_as_percentage: true
+    sort_descending: true
+
+# Tool Comparison
+tool_comparison:
+  # Tools to compare
+  tools:
+    - name: 'AI Model'
+      color: '#FF6B6B'
+      enabled: true
+    - name: 'Slither'
+      color: '#4CAF50'
+      enabled: true
+    - name: 'Mythril'
+      color: '#2196F3'
+      enabled: true
+  
+  # Comparison metrics
+  metrics:
+    - 'Accuracy'
+    - 'Precision'
+    - 'Recall'
+    - 'F1-Score'
+    - 'Analysis Time'
+    - 'False Positives'
+
+# PDF Report Configuration
+pdf_report:
+  # Report styling
+  styling:
+    font_family: 'Helvetica'
+    font_size: 12
+    line_height: 1.2
+    margin_top: 72
+    margin_bottom: 72
+    margin_left: 72
+    margin_right: 72
+  
+  # Report sections
+  sections:
+    - 'Executive Summary'
+    - 'Vulnerability Findings'
+    - 'Tool Comparison'
+    - 'Recommendations'
+    - 'Technical Details'
+  
+  # Include charts in PDF
+  include_charts: true
+  chart_dpi: 300
+
+# Performance
+performance:
+  # Caching
+  enable_caching: true
+  cache_ttl: 3600  # 1 hour
+  
+  # Session state
+  session_timeout: 7200  # 2 hours
+  max_session_size: 100  # MB
+  
+  # Resource limits
+  max_concurrent_analyses: 5
+  analysis_timeout: 60  # seconds
+
+# Error Handling
+error_handling:
+  show_error_details: true
+  log_errors: true
+  user_friendly_messages: true
+  
+  # Error messages
+  messages:
+    file_too_large: 'File size exceeds 1MB limit'
+    invalid_file_type: 'Please upload a .sol file'
+    analysis_timeout: 'Analysis timed out. Please try with a smaller contract'
+    server_error: 'Server error occurred. Please try again later'
+
+# Help and Documentation
+help:
+  show_tooltips: true
+  show_help_sidebar: true
+  documentation_url: 'https://github.com/example/smart-contract-ai-analyzer'
+  
+  # Tutorial
+  show_tutorial: true
+  tutorial_steps:
+    - 'Upload or paste your Solidity contract'
+    - 'Configure analysis options'
+    - 'Click Analyze to start'
+    - 'Review results and recommendations'
+    - 'Download PDF report if needed'

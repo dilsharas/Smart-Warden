@@ -1,0 +1,20 @@
+# Minimal requirements for Smart Contract AI Analyzer
+# Essential packages only - no optional dependencies
+
+# Web Frameworks (Core)
+streamlit>=1.28.0
+flask>=2.3.0
+flask-cors>=4.0.0
+
+# Data Processing (Core)
+pandas>=2.1.0
+numpy>=1.25.0
+
+# Visualization (Core)
+plotly>=5.17.0
+
+# HTTP Requests (Core)
+requests>=2.31.0
+
+# Utilities (Core)
+python-dotenv>=1.0.0

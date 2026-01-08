@@ -1,0 +1,368 @@
+/* ============================================
+   Theme Variables and Customization
+   ============================================ */
+
+/* Light Theme (Default) */
+:root[data-theme="light"],
+:root:not([data-theme]) {
+    --color-bg: #ffffff;
+    --color-bg-secondary: #f5f5f5;
+    --color-text: #333333;
+    --color-text-secondary: #666666;
+    --color-border: #e0e0e0;
+    --color-primary: #1f77b4;
+    --color-secondary: #2e8b57;
+}
+
+/* Dark Theme */
+:root[data-theme="dark"] {
+    --color-bg: #1e1e1e;
+    --color-bg-secondary: #2d2d2d;
+    --color-text: #e0e0e0;
+    --color-text-secondary: #b0b0b0;
+    --color-border: #404040;
+    --color-primary: #64b5f6;
+    --color-secondary: #81c784;
+}
+
+/* High Contrast Theme */
+:root[data-theme="high-contrast"] {
+    --color-bg: #000000;
+    --color-bg-secondary: #1a1a1a;
+    --color-text: #ffffff;
+    --color-text-secondary: #e0e0e0;
+    --color-border: #ffffff;
+    --color-primary: #ffff00;
+    --color-secondary: #00ff00;
+    --color-danger: #ff0000;
+    --color-warning: #ffaa00;
+}
+
+/* Severity Color Themes */
+:root {
+    /* Standard Severity Colors */
+    --severity-critical-bg: #ffebee;
+    --severity-critical-border: #f44336;
+    --severity-critical-text: #b71c1c;
+
+    --severity-high-bg: #fff3e0;
+    --severity-high-border: #ff9800;
+    --severity-high-text: #e65100;
+
+    --severity-medium-bg: #f3e5f5;
+    --severity-medium-border: #9c27b0;
+    --severity-medium-text: #4a148c;
+
+    --severity-low-bg: #e8f5e9;
+    --severity-low-border: #4caf50;
+    --severity-low-text: #1b5e20;
+}
+
+:root[data-theme="dark"] {
+    --severity-critical-bg: #3f1111;
+    --severity-critical-border: #ff5252;
+    --severity-critical-text: #ff8a80;
+
+    --severity-high-bg: #3f2c1a;
+    --severity-high-border: #ffb74d;
+    --severity-high-text: #ffe0b2;
+
+    --severity-medium-bg: #3f2c4a;
+    --severity-medium-border: #ce93d8;
+    --severity-medium-text: #f8bbd0;
+
+    --severity-low-bg: #1f3a1f;
+    --severity-low-border: #81c784;
+    --severity-low-text: #c8e6c9;
+}
+
+/* Vulnerability Severity Styles */
+.severity-critical {
+    background-color: var(--severity-critical-bg);
+    border-left: 4px solid var(--severity-critical-border);
+    color: var(--severity-critical-text);
+}
+
+.severity-high {
+    background-color: var(--severity-high-bg);
+    border-left: 4px solid var(--severity-high-border);
+    color: var(--severity-high-text);
+}
+
+.severity-medium {
+    background-color: var(--severity-medium-bg);
+    border-left: 4px solid var(--severity-medium-border);
+    color: var(--severity-medium-text);
+}
+
+.severity-low {
+    background-color: var(--severity-low-bg);
+    border-left: 4px solid var(--severity-low-border);
+    color: var(--severity-low-text);
+}
+
+/* Badge Styles */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+}
+
+.badge-critical {
+    background-color: var(--severity-critical-border);
+    color: white;
+}
+
+.badge-high {
+    background-color: var(--severity-high-border);
+    color: white;
+}
+
+.badge-medium {
+    background-color: var(--severity-medium-border);
+    color: white;
+}
+
+.badge-low {
+    background-color: var(--severity-low-border);
+    color: white;
+}
+
+.badge-success {
+    background-color: var(--color-success);
+    color: white;
+}
+
+.badge-warning {
+    background-color: var(--color-warning);
+    color: white;
+}
+
+.badge-danger {
+    background-color: var(--color-danger);
+    color: white;
+}
+
+.badge-info {
+    background-color: var(--color-info);
+    color: white;
+}
+
+/* Risk Score Colors */
+.risk-score-critical {
+    color: var(--severity-critical-border);
+}
+
+.risk-score-high {
+    color: var(--severity-high-border);
+}
+
+.risk-score-medium {
+    color: var(--severity-medium-border);
+}
+
+.risk-score-low {
+    color: var(--severity-low-border);
+}
+
+.risk-score-safe {
+    color: var(--color-success);
+}
+
+/* Gradient Backgrounds */
+.gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary), #1565a0);
+}
+
+.gradient-success {
+    background: linear-gradient(135deg, var(--color-success), #2e7d32);
+}
+
+.gradient-danger {
+    background: linear-gradient(135deg, var(--color-danger), #c62828);
+}
+
+.gradient-warning {
+    background: linear-gradient(135deg, var(--color-warning), #e65100);
+}
+
+/* Code Highlighting Theme */
+.code-highlight {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    overflow-x: auto;
+}
+
+.code-highlight.vulnerable {
+    border-left: 4px solid var(--severity-critical-border);
+}
+
+.code-highlight.warning {
+    border-left: 4px solid var(--severity-high-border);
+}
+
+/* Chart Colors */
+:root {
+    --chart-color-1: #1f77b4;
+    --chart-color-2: #ff7f0e;
+    --chart-color-3: #2ca02c;
+    --chart-color-4: #d62728;
+    --chart-color-5: #9467bd;
+    --chart-color-6: #8c564b;
+    --chart-color-7: #e377c2;
+    --chart-color-8: #7f7f7f;
+}
+
+:root[data-theme="dark"] {
+    --chart-color-1: #64b5f6;
+    --chart-color-2: #ffb74d;
+    --chart-color-3: #81c784;
+    --chart-color-4: #ef5350;
+    --chart-color-5: #ba68c8;
+    --chart-color-6: #a1887f;
+    --chart-color-7: #f06292;
+    --chart-color-8: #bdbdbd;
+}
+
+/* Animation Themes */
+@media (prefers-reduced-motion: no-preference) {
+    .fade-in {
+        animation: fadeIn 0.3s ease-in;
+    }
+
+    .slide-in {
+        animation: slideIn 0.3s ease-out;
+    }
+
+    .bounce-in {
+        animation: bounceIn 0.5s ease-out;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes bounceIn {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Transition Themes */
+.transition-fast {
+    transition: all 150ms ease-in-out;
+}
+
+.transition-base {
+    transition: all 250ms ease-in-out;
+}
+
+.transition-slow {
+    transition: all 350ms ease-in-out;
+}
+
+/* Shadow Themes */
+.shadow-sm {
+    box-shadow: var(--shadow-sm);
+}
+
+.shadow-md {
+    box-shadow: var(--shadow-md);
+}
+
+.shadow-lg {
+    box-shadow: var(--shadow-lg);
+}
+
+.shadow-none {
+    box-shadow: none;
+}
+
+/* Border Radius Themes */
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-full {
+    border-radius: 9999px;
+}
+
+/* Opacity Utilities */
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: 0.25; }
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+/* Display Utilities */
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.grid { display: grid; }
+.hidden { display: none; }
+
+/* Positioning Utilities */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+/* Overflow Utilities */
+.overflow-auto { overflow: auto; }
+.overflow-hidden { overflow: hidden; }
+.overflow-visible { overflow: visible; }
+.overflow-x-auto { overflow-x: auto; }
+.overflow-y-auto { overflow-y: auto; }
+
+/* Cursor Utilities */
+.cursor-pointer { cursor: pointer; }
+.cursor-default { cursor: default; }
+.cursor-not-allowed { cursor: not-allowed; }
+.cursor-text { cursor: text; }
+
+/* User Select Utilities */
+.select-none { user-select: none; }
+.select-text { user-select: text; }
+.select-all { user-select: all; }

@@ -1,0 +1,82 @@
+# Machine Learning Model Configuration
+
+# Random Forest Configuration
+random_forest:
+  n_estimators: 100
+  max_depth: 20
+  min_samples_split: 5
+  min_samples_leaf: 2
+  max_features: 'sqrt'
+  class_weight: 'balanced'
+  random_state: 42
+  n_jobs: -1
+
+# Neural Network Configuration
+neural_network:
+  hidden_layers: [64, 32, 16]
+  activation: 'relu'
+  dropout_rate: 0.3
+  learning_rate: 0.001
+  batch_size: 32
+  epochs: 100
+  validation_split: 0.2
+  early_stopping_patience: 10
+
+# Hyperparameter Tuning
+hyperparameter_tuning:
+  cv_folds: 5
+  scoring: 'f1'
+  n_jobs: -1
+  verbose: 2
+  
+  # Random Forest parameter grid
+  rf_param_grid:
+    n_estimators: [50, 100, 200]
+    max_depth: [10, 20, 30, null]
+    min_samples_split: [2, 5, 10]
+    min_samples_leaf: [1, 2, 4]
+    max_features: ['sqrt', 'log2']
+
+# Feature Engineering
+feature_engineering:
+  # Feature scaling
+  scale_features: true
+  scaler_type: 'StandardScaler'
+  
+  # Feature selection
+  feature_selection: false
+  selection_method: 'SelectKBest'
+  k_features: 20
+
+# Model Evaluation
+evaluation:
+  test_size: 0.15
+  validation_size: 0.15
+  stratify: true
+  random_state: 42
+  
+  # Metrics to compute
+  metrics:
+    - accuracy
+    - precision
+    - recall
+    - f1_score
+    - roc_auc
+    - confusion_matrix
+
+# Model Persistence
+persistence:
+  model_dir: 'models/'
+  save_format: 'pickle'  # 'pickle' or 'joblib'
+  include_metadata: true
+  
+  # Model versioning
+  versioning: true
+  version_format: 'v{major}.{minor}.{patch}'
+
+# Performance Thresholds
+thresholds:
+  min_accuracy: 0.85
+  min_precision: 0.85
+  min_recall: 0.80
+  max_false_positive_rate: 0.15

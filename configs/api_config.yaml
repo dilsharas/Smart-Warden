@@ -1,0 +1,120 @@
+# API Server Configuration
+
+# Flask Configuration
+flask:
+  host: '0.0.0.0'
+  port: 5000
+  debug: false
+  secret_key: 'your-secret-key-change-in-production'
+  
+# CORS Configuration
+cors:
+  origins:
+    - 'http://localhost:3000'
+    - 'http://localhost:8501'
+    - 'http://127.0.0.1:3000'
+    - 'http://127.0.0.1:8501'
+  methods:
+    - GET
+    - POST
+    - PUT
+    - DELETE
+    - OPTIONS
+  allow_headers:
+    - Content-Type
+    - Authorization
+    - X-Requested-With
+
+# Rate Limiting
+rate_limiting:
+  enabled: true
+  default_limits:
+    - '100 per hour'
+    - '20 per minute'
+  
+  # Endpoint-specific limits
+  endpoint_limits:
+    '/api/analyze': '10 per minute'
+    '/api/health': '60 per minute'
+
+# Request Validation
+validation:
+  max_file_size: 1048576  # 1MB in bytes
+  allowed_extensions: ['.sol']
+  max_contract_lines: 5000
+  timeout_seconds: 60
+
+# Security
+security:
+  enable_csrf: false  # Disabled for API
+  secure_headers: true
+  content_security_policy: false
+  
+# Logging
+logging:
+  level: 'INFO'
+  format: '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+  file: 'logs/api.log'
+  max_bytes: 10485760  # 10MB
+  backup_count: 5
+
+# Database (Optional)
+database:
+  enabled: false
+  url: 'sqlite:///analyzer.db'
+  pool_size: 5
+  max_overflow: 10
+
+# Caching
+caching:
+  enabled: true
+  backend: 'redis'  # 'redis' or 'memory'
+  redis_url: 'redis://localhost:6379/0'
+  default_timeout: 3600  # 1 hour
+  
+  # Cache keys TTL
+  cache_ttl:
+    analysis_results: 7200  # 2 hours
+    model_predictions: 3600  # 1 hour
+    tool_results: 1800      # 30 minutes
+
+# External Tools
+external_tools:
+  slither:
+    enabled: true
+    path: 'slither'
+    timeout: 30
+    output_format: 'json'
+    
+  mythril:
+    enabled: true
+    path: 'myth'
+    timeout: 30
+    output_format: 'json'
+
+# Performance
+performance:
+  max_workers: 4
+  worker_timeout: 120
+  memory_limit: '1GB'
+  
+# Health Check
+health_check:
+  enabled: true
+  endpoint: '/api/health'
+  include_dependencies: true
+  
+  # Dependencies to check
+  dependencies:
+    - database
+    - redis
+    - external_tools
+
+# API Documentation
+documentation:
+  enabled: true
+  title: 'Smart Contract Security Analyzer API'
+  version: '1.0.0'
+  description: 'AI-enhanced vulnerability detection for Ethereum smart contracts'
+  swagger_ui_path: '/api/docs'
+  openapi_spec_path: '/api/openapi.json'

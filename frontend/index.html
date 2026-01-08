@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Contract AI Analyzer - Advanced security analysis for Ethereum smart contracts">
+    <title>Smart Contract AI Analyzer</title>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+    <div id="app" class="app-container">
+        <!-- Header -->
+        <header class="app-header" role="banner">
+            <div class="header-content">
+                <div class="header-brand">
+                    <h1 class="brand-title">🔒 Smart Contract AI Analyzer</h1>
+                    <p class="brand-subtitle">Advanced AI-powered security analysis</p>
+                </div>
+                <div class="header-actions">
+                    <button id="themeToggle" class="btn-icon" aria-label="Toggle theme" title="Toggle dark/light theme">
+                        🌙
+                    </button>
+                    <button id="helpBtn" class="btn-icon" aria-label="Help" title="Show help">
+                        ❓
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="app-main">
+            <!-- Sidebar Navigation -->
+            <aside class="app-sidebar" role="navigation" aria-label="Main navigation">
+                <nav class="sidebar-nav">
+                    <div class="nav-section">
+                        <h2 class="nav-title">Navigation</h2>
+                        <ul class="nav-list">
+                            <li><a href="#/analyze" class="nav-link" data-page="analyze">🔍 Analyze Contract</a></li>
+                            <li><a href="#/results" class="nav-link" data-page="results">📊 Results</a></li>
+                            <li><a href="#/comparison" class="nav-link" data-page="comparison">⚖️ Tool Comparison</a></li>
+                            <li><a href="#/metrics" class="nav-link" data-page="metrics">📈 Performance Metrics</a></li>
+                            <li><a href="#/about" class="nav-link" data-page="about">ℹ️ About</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h2 class="nav-title">🔐 Fraud Detection</h2>
+                        <ul class="nav-list">
+                            <li><a href="#/fraud-detection" class="nav-link" data-page="fraud-detection">🔍 Analyze Transactions</a></li>
+                            <li><a href="#/fraud-metrics" class="nav-link" data-page="fraud-metrics">📊 Metrics</a></li>
+                            <li><a href="#/fraud-history" class="nav-link" data-page="fraud-history">📋 History</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="nav-section">
+                        <h2 class="nav-title">System Status</h2>
+                        <div class="status-indicators">
+                            <div class="status-item">
+                                <span class="status-label">API Status</span>
+                                <span id="apiStatus" class="status-badge status-loading" title="Checking API connection">●</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">AI Models</span>
+                                <span id="modelStatus" class="status-badge status-loading" title="Checking model availability">●</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">External Tools</span>
+                                <span id="toolsStatus" class="status-badge status-loading" title="Checking external tools">●</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-section">
+                        <h2 class="nav-title">🔧 External Tools</h2>
+                        <div class="tools-selection">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-bottom: 8px;">
+                                <input type="checkbox" id="slitherTool" checked>
+                                <span>Slither Analysis</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" id="mythrilTool">
+                                <span>Mythril Analysis</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="nav-section">
+                        <h2 class="nav-title">🤖 AI Models</h2>
+                        <div class="models-selection">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; margin-bottom: 8px;">
+                                <input type="checkbox" id="binaryModel" checked>
+                                <span>Binary Classifier</span>
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                <input type="checkbox" id="multiclassModel" checked>
+                                <span>Multi-class Classifier</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="nav-section">
+                        <h2 class="nav-title">Quick Actions</h2>
+                        <button id="clearHistoryBtn" class="btn btn-secondary btn-block">🗑️ Clear History</button>
+                        <button id="loadSampleBtn" class="btn btn-secondary btn-block">📥 Load Sample</button>
+                    </div>
+
+                    <div class="nav-section">
+                        <h2 class="nav-title">Analysis Stats</h2>
+                        <div id="analysisStats" class="stats-container">
+                            <div class="stat-item">
+                                <span class="stat-label">Total Analyses</span>
+                                <span class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Vulnerabilities Found</span>
+                                <span class="stat-value">0</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Vulnerability Rate</span>
+                                <span class="stat-value">0%</span>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="app-content" role="main">
+                <div id="pageContainer" class="page-container">
+                    <!-- Pages will be rendered here -->
+                </div>
+            </main>
+        </div>
+
+        <!-- Status Bar Footer -->
+        <footer class="app-footer" role="contentinfo">
+            <div class="footer-content">
+                <span id="footerStatus" class="footer-status">Ready</span>
+                <span class="footer-divider">•</span>
+                <span id="footerTime" class="footer-time"></span>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modalContainer" class="modal-container"></div>
+
+    <!-- Error Boundary -->
+    <div id="errorBoundary" class="error-boundary" style="display: none;">
+        <div class="error-content">
+            <h2>⚠️ An Error Occurred</h2>
+            <p id="errorMessage"></p>
+            <button id="errorRetryBtn" class="btn btn-primary">Retry</button>
+            <button id="errorReloadBtn" class="btn btn-secondary">Reload Page</button>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    
+    <!-- Application Scripts -->
+    <script src="js/utils/helpers.js?v=4"></script>
+    <script src="js/utils/validators.js?v=4"></script>
+    <script src="js/utils/formatters.js?v=4"></script>
+    <script src="js/services/eventBus.js?v=4"></script>
+    <script src="js/services/storageService.js?v=4"></script>
+    <script src="js/services/stateManager.js?v=4"></script>
+    <script src="js/services/apiService.js?v=4"></script>
+    <script src="js/components/modal.js?v=4"></script>
+    <script src="js/components/codeEditor.js?v=4"></script>
+    <script src="js/components/resultsTable.js?v=4"></script>
+    <script src="js/components/riskGauge.js?v=4"></script>
+    <script src="js/components/charts.js?v=4"></script>
+    <script src="js/pages/analyze.js?v=4"></script>
+    <script src="js/pages/results.js?v=4"></script>
+    <script src="js/pages/comparison.js?v=4"></script>
+    <script src="js/pages/metrics.js?v=4"></script>
+    <script src="js/pages/about.js?v=4"></script>
+    <script src="js/services/fraudDetectionService.js?v=4"></script>
+    <script src="js/pages/fraud-detection.js?v=4"></script>
+    <script src="js/pages/fraud-metrics.js?v=4"></script>
+    <script src="js/pages/fraud-history.js?v=4"></script>
+    <script src="js/router.js?v=4"></script>
+    <script src="js/app.js?v=4"></script>
+</body>
+</html>
